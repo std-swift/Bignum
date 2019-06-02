@@ -1,0 +1,16 @@
+//
+//  module.modulemap
+//  CBignum
+//
+
+module CBignum {
+	export *
+	
+	header "BigInt.h"
+	header "BigUInt.h"
+	
+	private header "common.h"
+	private header "macros.h"
+	private header "_BigInt.h"
+	private header "_BigUInt.h"
+}

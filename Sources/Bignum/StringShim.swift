@@ -3,7 +3,7 @@
 //  Bignum
 //
 
-#if os(macOS)
+#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 import func Darwin.C.string.memcpy
 #endif
 

@@ -51,7 +51,7 @@ final class BigIntTests: XCTestCase {
 			XCTFail("BigInt from /\(range.count):\(count): \"\(string)\"")
 			return
 		}
-		XCTAssertEqual(String(BigInt, radix: range.count), string, message(), file: file, line: line)
+		XCTAssertEqual(String(BigInt, radix: range.count), string, message(), file: (file), line: line)
 	}
 	
 	private static func AssertStringInit2(_ range: [Character], _ count: Int, _ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) {
@@ -60,7 +60,7 @@ final class BigIntTests: XCTestCase {
 			XCTFail("BigInt from /\(range.count):\(count): \"\(string)\"")
 			return
 		}
-		XCTAssertEqual(String(BigInt, radix: range.count), string, message(), file: file, line: line)
+		XCTAssertEqual(String(BigInt, radix: range.count), string, message(), file: (file), line: line)
 	}
 	
 	func testString2ConversionShort() {
@@ -432,9 +432,9 @@ final class BigIntTests: XCTestCase {
 	private static func AssertDivision(_ lhs: BigInt, _ rhs: BigInt, _ quotient: BigInt, _ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) {
 		XCTAssertEqual(lhs / rhs, quotient)
 		let qr = lhs.quotientAndRemainder(dividingBy: rhs)
-		XCTAssertNotEqual(qr.remainder, 0, message(), file: file, line: line)
-		XCTAssertEqual(qr.quotient, quotient, message(), file: file, line: line)
-		XCTAssertEqual((lhs - qr.remainder).quotientAndRemainder(dividingBy: quotient).quotient, rhs, message(), file: file, line: line)
+		XCTAssertNotEqual(qr.remainder, 0, message(), file: (file), line: line)
+		XCTAssertEqual(qr.quotient, quotient, message(), file: (file), line: line)
+		XCTAssertEqual((lhs - qr.remainder).quotientAndRemainder(dividingBy: quotient).quotient, rhs, message(), file: (file), line: line)
 	}
 	
 	func testDivisionShort() {
@@ -492,7 +492,7 @@ final class BigIntTests: XCTestCase {
 	}
 	
 	private static func AssertRemainder(_ lhs: BigInt, _ rhs: BigInt, _ remainder: BigInt, _ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) {
-		XCTAssertEqual(lhs.quotientAndRemainder(dividingBy: rhs).remainder, remainder, message(), file: file, line: line)
+		XCTAssertEqual(lhs.quotientAndRemainder(dividingBy: rhs).remainder, remainder, message(), file: (file), line: line)
 	}
 	
 	func testRemainderShort() {
@@ -683,9 +683,9 @@ final class BigIntTests: XCTestCase {
 		let words1 = zip(BigIntTests.SignExtend(lhs, to: maxCount), BigIntTests.SignExtend(rhs, to: maxCount))
 		let words2 = zip(BigIntTests.SignExtend(and, to: maxCount), words1)
 		for word in words2 {
-			XCTAssertEqual(word.1.0 & word.1.1, word.0, message(), file: file, line: line)
+			XCTAssertEqual(word.1.0 & word.1.1, word.0, message(), file: (file), line: line)
 		}
-		XCTAssertEqual(and < 0, lhs < 0 && rhs < 0, message(), file: file, line: line)
+		XCTAssertEqual(and < 0, lhs < 0 && rhs < 0, message(), file: (file), line: line)
 	}
 	
 	func testAndShort() {
@@ -759,9 +759,9 @@ final class BigIntTests: XCTestCase {
 		let words1 = zip(BigIntTests.SignExtend(lhs, to: maxCount), BigIntTests.SignExtend(rhs, to: maxCount))
 		let words2 = zip(BigIntTests.SignExtend(or, to: maxCount), words1)
 		for word in words2 {
-			XCTAssertEqual(word.1.0 | word.1.1, word.0, message(), file: file, line: line)
+			XCTAssertEqual(word.1.0 | word.1.1, word.0, message(), file: (file), line: line)
 		}
-		XCTAssertEqual(or < 0, lhs < 0 || rhs < 0, message(), file: file, line: line)
+		XCTAssertEqual(or < 0, lhs < 0 || rhs < 0, message(), file: (file), line: line)
 	}
 	
 	func testOrShort() {
@@ -835,9 +835,9 @@ final class BigIntTests: XCTestCase {
 		let words1 = zip(BigIntTests.SignExtend(lhs, to: maxCount), BigIntTests.SignExtend(rhs, to: maxCount))
 		let words2 = zip(BigIntTests.SignExtend(xor, to: maxCount), words1)
 		for word in words2 {
-			XCTAssertEqual(word.1.0 ^ word.1.1, word.0, message(), file: file, line: line)
+			XCTAssertEqual(word.1.0 ^ word.1.1, word.0, message(), file: (file), line: line)
 		}
-		XCTAssertEqual(xor < 0, (lhs < 0) != (rhs < 0), message(), file: file, line: line)
+		XCTAssertEqual(xor < 0, (lhs < 0) != (rhs < 0), message(), file: (file), line: line)
 	}
 	
 	func testXorShort() {

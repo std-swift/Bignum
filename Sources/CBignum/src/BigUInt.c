@@ -18,8 +18,8 @@ size_t _BigUInt_Addition(size_t* lhs, size_t lhsCount,
                          size_t* sum) {
 	size_t maxCount = MAX(lhsCount, rhsCount);
 	
-	int lhsRemaining = lhsCount;
-	int rhsRemaining = rhsCount;
+	size_t lhsRemaining = lhsCount;
+	size_t rhsRemaining = rhsCount;
 	
 	size_t new = 0;
 	bool overflow = false;
@@ -61,8 +61,8 @@ size_t _BigUInt_Addition(size_t* lhs, size_t lhsCount,
 size_t _BigUInt_Subtraction(size_t* lhs, size_t lhsCount,
                             size_t* rhs, size_t rhsCount,
                             size_t* diff) {
-	int lhsRemaining = lhsCount;
-	int rhsRemaining = rhsCount;
+	size_t lhsRemaining = lhsCount;
+	size_t rhsRemaining = rhsCount;
 	
 	size_t new = 0;
 	bool overflow = false;
